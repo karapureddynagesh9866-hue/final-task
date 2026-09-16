@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Personnel Ledger — Employee Management</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style8.css">
+</head>
+<body>
+<div class="wrap">
+
+  <div class="masthead">
+    <div>
+      <div class="kicker">RECORD OFFICE — STAFF FILE</div>
+      <h1>Employee Management Ledger</h1>
+    </div>
+    <div class="clock">
+      <div id="clockDate">—</div>
+      <div class="time" id="clockTime">—</div>
+    </div>
+  </div>
+
+  <div id="statusLine">Loading employees…</div>
+
+  <div class="controls">
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="Search by name…">
+      <button id="searchBtn">SEARCH</button>
+    </div>
+
+    <div class="dept-tabs" id="deptTabs">
+      <button data-dept="All" class="active">All</button>
+      <button data-dept="IT">IT</button>
+      <button data-dept="HR">HR</button>
+      <button data-dept="Finance">Finance</button>
+      <button data-dept="Marketing">Marketing</button>
+    </div>
+
+    <div class="sort-select">
+      <span>SORT</span>
+      <select id="sortSelect">
+        <option value="none">— none —</option>
+        <option value="name-asc">Name ↑</option>
+        <option value="name-desc">Name ↓</option>
+        <option value="age-asc">Age ↑</option>
+        <option value="age-desc">Age ↓</option>
+        <option value="salary-asc">Salary ↑</option>
+        <option value="salary-desc">Salary ↓</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="count-strip" id="countStrip">Total Employees: <b>0</b></div>
+
+  <div class="grid" id="employeeGrid"></div>
+
+  <div class="section-head"><h2>Add Employee</h2><div class="rule"></div></div>
+  <div class="form-panel">
+    <div class="form-grid">
+      <div class="field" id="f-name">
+        <label>Name</label>
+        <input type="text" id="inName" placeholder="e.g. Naveen">
+        <div class="err-msg">❌ Please enter employee name</div>
+      </div>
+      <div class="field" id="f-age">
+        <label>Age</label>
+        <input type="number" id="inAge" placeholder="e.g. 25">
+        <div class="err-msg">❌ Age must be greater than 18</div>
+      </div>
+      <div class="field" id="f-email">
+        <label>Email</label>
+        <input type="text" id="inEmail" placeholder="e.g. naveen@gmail.com">
+        <div class="err-msg">❌ Please enter a valid email</div>
+      </div>
+      <div class="field" id="f-dept">
+        <label>Department</label>
+        <select id="inDept">
+          <option value="">— select —</option>
+          <option value="IT">IT</option>
+          <option value="HR">HR</option>
+          <option value="Finance">Finance</option>
+          <option value="Marketing">Marketing</option>
+        </select>
+        <div class="err-msg">❌ Department must be selected</div>
+      </div>
+      <div class="field" id="f-salary">
+        <label>Salary (₹)</label>
+        <input type="number" id="inSalary" placeholder="e.g. 50000">
+        <div class="err-msg">❌ Please enter a valid salary</div>
+      </div>
+    </div>
+    <div class="form-actions">
+      <button class="btn-primary" id="addBtn">Add Employee</button>
+      <span class="form-note">Locally added staff carry a salary figure for the ledger totals below.</span>
+    </div>
+  </div>
+
+  <div class="section-head"><h2>Payroll Summary</h2><div class="rule"></div></div>
+  <div class="stats-panel">
+    <div class="stats-grid">
+      <div class="stat">
+        <div class="label">TOTAL EMPLOYEES</div>
+        <div class="value" id="statTotal">0</div>
+      </div>
+      <div class="stat">
+        <div class="label">TOTAL SALARY (LOCAL STAFF)</div>
+        <div class="value small" id="statTotalSalary">₹0</div>
+      </div>
+      <div class="stat">
+        <div class="label">AVERAGE SALARY</div>
+        <div class="value small" id="statAvgSalary">₹0</div>
+      </div>
+      <div class="stat top">
+        <div class="label">HIGHEST PAID</div>
+        <div class="value small" id="statTopPaid">—</div>
+      </div>
+    </div>
+  </div>
+
+  <footer>Employee Management Dashboard — built with fetch · filter · reduce · sort</footer>
+</div>
+
+<script src="task8.js"></script>
+</body>
+</html>
